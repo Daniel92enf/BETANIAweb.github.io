@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMinimarket Betania</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #462a5e;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        #chatbox {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            width: calc(100% - 100px);
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chat en Línea</h1>
+    </header>
+    <div class="container">
+        <div id="chatbox"></div>
+        <form id="messageForm">
+            <input type="text" id="messageInput" placeholder="Escribe tu mensaje..." autocomplete="off">
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+    <script>
+        const chatbox = document.getElementById('chatbox');
+        const messageForm = document.getElementById('messageForm');
+        const messageInput = document.getElementById('messageInput');
+
+        messageForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const message = messageInput.value.trim();
+            if (message !== '') {
+                appendMessage('Tú', message);
+                // Aquí puedes agregar la lógica para enviar el mensaje al servidor o a un operador
+                messageInput.value = '';
+            }
+        });
+
+        function appendMessage(sender, message) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            chatbox.appendChild(messageElement);
+            chatbox.scrollTop = chatbox.scrollHeight; // Auto-scroll to bottom
+        }
+    </script>
+</body>
+</html>

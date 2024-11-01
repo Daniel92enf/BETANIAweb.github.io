@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimarket Betania</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        input[type="submit"],
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Realizar una Venta</h1>
+    <form id="ventaForm">
+        <label for="producto">Producto:</label>
+        <select id="producto" name="producto" required>
+            <option value="Producto 1">Producto 1</option>
+            <option value="Producto 2">Producto 2</option>
+            <!-- Agrega más productos aquí -->
+        </select>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" min="1" required>
+        <label for="cliente">Nombre del Cliente:</label>
+        <input type="text" id="cliente" name="cliente" required>
+        <label for="descuento">Descuento (%) (opcional):</label>
+        <input type="number" id="descuento" name="descuento" min="0" max="100">
+        <input type="submit" value="Realizar Venta">
+    </form>
+    <div id="resultadoVenta"></div>
+
+    <script>
+        document.getElementById('ventaForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const producto = formData.get('producto');
+            const cantidad = parseInt(formData.get('cantidad'));
+            const cliente = formData.get('cliente');
+            const descuento = parseInt(formData.get('descuento')) || 0;
+
+            // Aquí podrías agregar lógica adicional, como enviar los datos a un servidor para procesar la venta
+
+            // Simplemente mostramos el resultado en la página por ahora
+            const total = calcularTotal(producto, cantidad, descuento);
+            document.getElementById('resultadoVenta').innerHTML = `<p>Venta realizada:<br> Producto: ${producto}<br> Cantidad: ${cantidad}<br> Cliente: ${cliente}<br> Descuento: ${descuento}%<br> Total a pagar: $${total.toFixed(2)}</p>`;
+        });
+
+        function calcularTotal(producto, cantidad, descuento) {
+            let precioUnitario = 0;
+
+            // Aquí podrías obtener el precio unitario del producto desde una base de datos o una fuente de datos externa
+            // Por ahora, simplemente establecemos precios ficticios para los productos
+            switch (producto) {
+                case 'Producto 1':
+                    precioUnitario = 10.00;
+                    break;
+                case 'Producto 2':
+                    precioUnitario = 15.00;
+                    break;
+                // Agrega más casos según sea necesario para otros productos
+                default:
+                    precioUnitario = 0.00;
+                    break;
+            }
+
+            let total = precioUnitario * cantidad;
+            if (descuento > 0) {
+                total -= (total * (descuento / 100));
+            }
+            return total;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimarket Betania</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .favorites {
+            color: #f00;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sección de Favoritos</h2>
+        <ul id="products">
+            <li data-id="1">
+                Producto 1 <span class="favorites">&#9734;</span>
+            </li>
+            <li data-id="2">
+                Producto 2 <span class="favorites">&#9734;</span>
+            </li>
+            <li data-id="3">
+                Producto 3 <span class="favorites">&#9734;</span>
+            </li>
+            <!-- Puedes agregar más elementos li según sea necesario -->
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const favorites = document.querySelectorAll(".favorites");
+
+            // Event listener para manejar el clic en el ícono de favoritos
+            favorites.forEach(favorite => {
+                favorite.addEventListener("click", function() {
+                    // Cambiar el color del ícono de favoritos
+                    if (favorite.classList.contains("selected")) {
+                        favorite.classList.remove("selected");
+                    } else {
+                        favorite.classList.add("selected");
+                    }
+
+                    // Puedes agregar aquí la lógica para guardar el producto en favoritos
+                    // Por ejemplo, puedes utilizar localStorage o enviar una solicitud al servidor
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimarket Betania</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #392896;
+            text-align: left;
+        }
+        th {
+            background-color: #2a2875;
+        }
+        tr:hover {
+            background-color: #f0eaea;
+        }
+        .total {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .total span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Carrito de Compras</h2>
+        <table id="cart">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se llenarán los productos dinámicamente -->
+            </tbody>
+        </table>
+        <div class="total">
+            Total: <span id="totalAmount">$0.00</span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cart = document.getElementById("cart");
+            const totalAmount = document.getElementById("totalAmount");
+
+            // Agregar un producto al carrito
+            function addToCart(productName, price) {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${productName}</td>
+                    <td>$${price.toFixed(2)}</td>
+                    <td><input type="number" min="1" value="1" class="quantity"></td>
+                    <td>$${price.toFixed(2)}</td>
+                    <td><button class="remove">Eliminar</button></td>
+                `;
+                cart.querySelector("tbody").appendChild(row);
+                updateTotal();
+            }
+
+            // Eliminar un producto del carrito
+            function removeFromCart(row) {
+                row.remove();
+                updateTotal();
+            }
+
+            // Actualizar el total del carrito
+            function updateTotal() {
+                let total = 0;
+                cart.querySelectorAll("tbody tr").forEach(row => {
+                    const price = parseFloat(row.cells[1].textContent.slice(1));
+                    const quantity = parseInt(row.querySelector(".quantity").value);
+                    total += price * quantity;
+                });
+                totalAmount.textContent = "$" + total.toFixed(2);
+            }
+
+            // Evento para agregar un producto al carrito
+            document.addEventListener("click", function(event) {
+                if (event.target.classList.contains("add-to-cart")) {
+                    const productName = event.target.dataset.name;
+                    const price = parseFloat(event.target.dataset.price);
+                    addToCart(productName, price);
+                }
+            });
+
+            // Evento para eliminar un producto del carrito
+            cart.addEventListener("click", function(event) {
+                if (event.target.classList.contains("remove")) {
+                    const row = event.target.closest("tr");
+                    removeFromCart(row);
+                }
+            });
+
+            // Evento para actualizar el total cuando se cambia la cantidad de un producto
+            cart.addEventListener("input", function(event) {
+                if (event.target.classList.contains("quantity")) {
+                    updateTotal();
+                }
+            });
+        });
+    </script>
+<UL>
+    <button class="add-to-cart" data-name="Producto 1" data-price="10.00">Agregar Producto 1</button>
+
+    <button class="add-to-cart" data-name="Producto 2" data-price="20.00">Agregar Producto 2</button>
+</UL>
+<nav>
+
+
+    <ul>
+
+
+        <li><a href="file:///D:/Desktop/MINI%20MARKET%20HTML/indexPedidoUsuario.html">PEDIDO DE USUARIO</a></li>
+
+        <li><a href="file:///D:/Desktop/MINI%20MARKET%20HTML/indexMetodoPago.html">METODOS DE PAGO</a></li>
+
+        
+    </ul>
+    
+</nav>
+</body>
+</html>

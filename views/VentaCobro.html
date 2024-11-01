@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimarket Betania</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Realizar Venta y Cobrar</h2>
+        <form action="procesar_venta.php" method="post">
+            <label for="cliente">Cliente:</label>
+            <input type="text" id="cliente" name="cliente" required>
+            <label for="producto">Producto:</label>
+            <select id="producto" name="producto" required>
+                <option value="Producto 1">Producto 1</option>
+                <option value="Producto 2">Producto 2</option>
+                <option value="Producto 3">Producto 3</option>
+                <!-- Agregar más opciones según sea necesario -->
+            </select>
+            <label for="cantidad">Cantidad:</label>
+            <input type="text" id="cantidad" name="cantidad" required>
+            <label for="metodo_pago">Método de Pago:</label>
+            <select id="metodo_pago" name="metodo_pago" required>
+                <option value="Efectivo">Efectivo</option>
+                <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+                <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+                <!-- Agregar más opciones según sea necesario -->
+            </select>
+            <input type="submit" value="Realizar Venta y Cobrar">
+        </form>
+    </div>
+</body>
+</html>

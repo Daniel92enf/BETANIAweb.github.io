@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #242a83;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+.container {
+    display: flex;
+}
+
+nav {
+    width: 200px;
+    background: #f2f2f2;
+    padding: 15px;
+    border-right: 1px solid #ccc;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    margin: 10px 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    display: block;
+    border-radius: 4px;
+}
+
+nav a:hover {
+    background-color: #ddd;
+}
+
+main {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: calc(100vh - 120px); /* Resta la altura del header y footer */
+    padding: 20px;
+    text-align: center; 
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f2f2f2;
+}
+.centro-imagen {
+    display: block;
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    max-width: 100%; /* Asegúrate de que la imagen no sobrepase el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    
+}
+footer {
+    text-align: center; 
+    padding: 10px 0; 
+    background-color: #f2f2f2; 
+    margin-top: 20px; 
+}
+
+
+

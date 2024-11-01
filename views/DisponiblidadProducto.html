@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimarket Betania</title>
+</head>
+<body>
+    <h1>Bienvenido a nuestra tienda online</h1>
+    <p>Por favor, navega por nuestros productos y encuentra lo que necesitas.</p>
+    <a href="ConsultaProductos.html">Ver productos</a>
+    <nav>
+        <ul>
+            <li><a href="file:///D:/Desktop/MINI%20MARKET%20HTML/indexPromociones.html">PROMOCIONES</a></li>
+
+        </ul>
+    </nav>
+    <h1>Realizar una Venta</h1>
+    <form action="procesar_venta.php" method="post">
+        <label for="producto">Producto:</label>
+        <select id="producto" name="producto" required>
+            <option value="Producto 1">Producto 1</option>
+            <option value="Producto 2">Producto 2</option>
+            <!-- Agrega más productos aquí -->
+        </select>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" min="1" required>
+        <label for="cliente">Nombre del Cliente:</label>
+        <input type="text" id="cliente" name="cliente" required>
+        <label for="total">Total a Pagar:</label>
+        <input type="text" id="total" name="total" readonly>
+        <button type="submit">Realizar Venta</button>
+    </form>
+    <a href="Menu de inicio.html">Volver a la página de inicio</a>
+</body>
+</html>
